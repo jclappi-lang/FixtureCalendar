@@ -7,7 +7,7 @@
   --bg:#f3f5fa;--panel:#ffffff;--panel-2:#f8f9fc;--ink:#172033;--muted:#68728a;--line:#e3e7ef;
   --accent:#4658df;--accent-ink:#ffffff;--soft:#f0f2f8;--hov:#f7f8ff;--hov-line:#b5bfdf;
   --hdr-a:#18223c;--hdr-b:#3f50b9;--hdr-ink:#ffffff;--hdr-sub:#dce2ff;
-  --clash:#a21caf;--shadow:0 8px 28px #18223c0b;--today-ring:#7380ff;--outside:#fafbfe;--outside-ink:#a4aabd;
+  --bad:#b42318;--warn:#a15c07;--add:#1d6fb8;--clash:#a21caf;--shadow:0 8px 28px #18223c0b;--today-ring:#7380ff;--outside:#fafbfe;--outside-ink:#a4aabd;
   --motion:#d6a313;--motion-bg:#fff6d7;
   --tigers:#32845e;--tigers-bg:#e8f6ee;
   --vets:#df762e;--vets-bg:#fff0e5;
@@ -18,7 +18,7 @@
   --bg:#0e1322;--panel:#161d33;--panel-2:#1b2340;--ink:#e7ebf7;--muted:#9aa4bf;--line:#27304c;
   --accent:#7f8cff;--accent-ink:#0e1322;--soft:#1f2745;--hov:#1f2745;--hov-line:#3b4770;
   --hdr-a:#0b1020;--hdr-b:#2a3680;--hdr-ink:#ffffff;--hdr-sub:#b9c3f5;
-  --clash:#e879f9;--shadow:none;--today-ring:#7f8cff;--outside:#131a2e;--outside-ink:#5d6784;
+  --bad:#ff8a80;--warn:#f5b84a;--add:#7fb7ff;--clash:#e879f9;--shadow:none;--today-ring:#7f8cff;--outside:#131a2e;--outside-ink:#5d6784;
   --motion:#e6b92f;--motion-bg:#2e2810;
   --tigers:#4cb687;--tigers-bg:#12281f;
   --vets:#f08f4a;--vets-bg:#33200f;
@@ -29,7 +29,7 @@
   --bg:#0e1322;--panel:#161d33;--panel-2:#1b2340;--ink:#e7ebf7;--muted:#9aa4bf;--line:#27304c;
   --accent:#7f8cff;--accent-ink:#0e1322;--soft:#1f2745;--hov:#1f2745;--hov-line:#3b4770;
   --hdr-a:#0b1020;--hdr-b:#2a3680;--hdr-ink:#ffffff;--hdr-sub:#b9c3f5;
-  --clash:#e879f9;--shadow:none;--today-ring:#7f8cff;--outside:#131a2e;--outside-ink:#5d6784;
+  --bad:#ff8a80;--warn:#f5b84a;--add:#7fb7ff;--clash:#e879f9;--shadow:none;--today-ring:#7f8cff;--outside:#131a2e;--outside-ink:#5d6784;
   --motion:#e6b92f;--motion-bg:#2e2810;
   --tigers:#4cb687;--tigers-bg:#12281f;
   --vets:#f08f4a;--vets-bg:#33200f;
@@ -105,6 +105,40 @@ button:focus-visible,select:focus-visible,.chip:focus-within{outline:2px solid v
 .ha.home{background:var(--ink);color:var(--panel)}
 .ha.away{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.event.editable{cursor:pointer}
+.event.editable:hover{filter:brightness(.97)}
+.event:focus-visible{box-shadow:0 0 0 2px var(--panel),0 0 0 4px var(--accent);outline-offset:2px}
+.event.off{opacity:.7}
+.event.off .etitle,.event.off .etime{text-decoration:line-through}
+.stag{font-size:9.5px;font-weight:850;text-transform:uppercase;letter-spacing:.06em;border:1px solid currentColor;border-radius:4px;padding:0 4px}
+.stag.bad{color:var(--bad)}.stag.warn{color:var(--warn)}.stag.add{color:var(--add)}
+.enote{display:block;margin-top:3px;font-size:11.5px;color:var(--muted);font-style:italic}
+
+/* edit and import dialogs */
+.overlay{position:fixed;inset:0;z-index:50;background:#0a0f1e99;display:grid;place-items:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:16px;width:min(580px,100%);max-height:100%;overflow:auto;padding:18px 18px 16px}
+.mt{margin:0 0 2px;font-size:20px;font-weight:850;letter-spacing:-.02em}
+.msub{margin:0 0 12px;color:var(--muted);font-size:13px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+.fields label{display:grid;gap:4px;font-size:12px;font-weight:750;color:var(--muted);min-width:0}
+.fields input[type=text],.fields input[type=date],.fields input[type=time],.fields input[type=file],.fields select{font:inherit;font-weight:500;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
+.fields input:disabled{opacity:.5}
+.fields label.chk{display:flex;gap:8px;align-items:center;color:var(--ink);font-weight:600;font-size:13px}
+.span2{grid-column:1/-1}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
+.actions .left{margin-right:auto;display:flex;gap:8px;flex-wrap:wrap}
+.danger{color:var(--bad)}
+.msg{color:var(--bad);font-size:13px;font-weight:700;min-height:0}
+.steps{margin:0 0 12px;padding-left:18px;font-size:13px;display:grid;gap:4px}
+.steps a{color:var(--accent)}
+.imp{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.imp input{margin-top:3px;accent-color:var(--accent)}
+.imp small{color:var(--muted)}
+.imp b{font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+.imp-list{margin:8px 0;max-height:min(340px,45vh);overflow:auto;border-top:1px solid var(--line)}
+.miss{font-size:12px;color:var(--muted);margin:6px 0}
+.linkbtn{border:0;background:none;padding:0 2px;color:var(--accent);text-decoration:underline;font-weight:700}
+.linkbtn:hover{background:none}
 
 /* weekend rows */
 .mh{margin:0;padding:9px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:850;background:var(--panel-2);border-bottom:1px solid var(--line)}
@@ -171,7 +205,9 @@ button:focus-visible,select:focus-visible,.chip:focus-within{outline:2px solid v
   .day{min-height:70px;padding:3px}
   .count{display:none}
   .devs .event{display:flex;align-items:center;justify-content:space-between;gap:2px;padding:3px 3px 3px 4px;font-size:9px}
-  .devs .eteam,.devs .etitle,.devs .ecomp,.devs .eclash{display:none}
+  .devs .eteam,.devs .etitle,.devs .ecomp,.devs .eclash,.devs .stag,.devs .enote{display:none}
+  .fields{grid-template-columns:minmax(0,1fr)}
+  .actions .left{margin-right:0;width:100%}
   .devs .ha{position:static;width:13px;height:13px;font-size:8px;flex:none}
   .devs .num{min-width:20px;height:20px}
 }
@@ -186,6 +222,8 @@ button:focus-visible,select:focus-visible,.chip:focus-within{outline:2px solid v
   <div class="nav" id="jumpwrap"><div class="month">Weekends</div><select id="jump" aria-label="Jump to month"></select></div>
   <div class="right">
     <div class="toggles"><button type="button" class="active" data-view="cal">Calendar</button><button type="button" data-view="agenda">Agenda</button></div>
+    <button type="button" id="add" hidden>+ Add fixture</button>
+    <button type="button" id="import" hidden>Import calendar</button>
     <button type="button" id="focus" aria-pressed="true">Weekend focus: On</button>
     <button type="button" id="today" class="primary">Today</button>
   </div>
@@ -207,7 +245,7 @@ button:focus-visible,select:focus-visible,.chip:focus-within{outline:2px solid v
     <div id="wklist"></div>
   </div>
   <div id="agendaview" class="agenda" hidden></div>
-  <div class="note">Weekend focus shows Saturdays and Sundays only; midweek games still appear under Next gameday. A box around a fixture means it clashes: kick-offs within 2 hours of each other, or exactly the same time when Hull City or Liverpool are involved. Times for professional fixtures are provisional and may change. Motion defaults to 10am Saturdays; Vets to 2pm Sundays.</div>
+  <div class="note"><span id="edithint" hidden>Click any fixture to edit, move, cancel or delete it. </span>Weekend focus shows Saturdays and Sundays only; midweek games still appear under Next gameday. A box around a fixture means it clashes: kick-offs within 2 hours of each other, or exactly the same time when Hull City or Liverpool are involved. Times for professional fixtures are provisional and may change. Motion defaults to 10am Saturdays; Vets to 2pm Sundays. <button type="button" id="restore" class="linkbtn" hidden></button></div>
 </section>
 
 <section class="panel legend">
@@ -222,6 +260,7 @@ button:focus-visible,select:focus-visible,.chip:focus-within{outline:2px solid v
 </section>
 <div class="foot">Fixture data is based on the working list supplied in this conversation. Please verify dates/times before travelling.</div>
 </main>
+<div id="overlay" class="overlay" hidden></div>
 
 <script>
 const CLASH_MINS=120; // kick-offs this close clash; Hull City and Liverpool only clash at exactly the same time
@@ -239,11 +278,11 @@ const $=id=>document.getElementById(id);
 const pad=n=>String(n).padStart(2,"0");
 function dt(s){let [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
 function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/'/g,"&#39;");
 const isWk=d=>d.getDay()===0||d.getDay()===6;
 const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
 
-const E=[];function a(d,t,time,title,detail=""){E.push({d,t,time,title,detail})}
+let E=[];function a(d,t,time,title,detail=""){E.push({d,t,time,title,detail})}
 [
 ["2026-09-19","motion","10:00","Motion Whites v Tekkers","Cup · Home"],["2026-09-22","motion","17:30","Hull City Academy v Motion Whites","Friendly · Away"],["2026-09-23","motion","TBC","Hawkes Scarborough v Motion Whites","Cup · Away"],["2026-09-26","motion","10:00","Motion Whites v Scarborough Athletic","Home"],
 ["2026-10-03","motion","10:00","East Riding Rangers v Motion Whites","Away"],["2026-10-10","motion","10:00","Motion Whites v 360 Centre Pickering","Home"],["2026-10-24","motion","10:00","Motion Whites v 360 Centre Scarborough","Home"],["2026-10-31","motion","10:00","Motion Sports Black v Motion Whites","Away"],["2026-11-14","motion","10:00","Motion Whites v Evolution Football Academy","Home"],["2026-11-21","motion","10:00","NYSA FC v Motion Whites","Away"],["2026-11-28","motion","10:00","Motion Whites v Joga Football Development","Home"],["2026-12-12","motion","10:00","Scarborough Athletic v Motion Whites","Away"],["2026-12-19","motion","10:00","Motion Whites v East Riding Rangers","Home"],["2027-01-09","motion","10:00","360 Centre Pickering v Motion Whites","Away"],["2027-01-23","motion","10:00","360 Centre Scarborough v Motion Whites","Away"],["2027-01-30","motion","10:00","Motion Whites v Motion Sports Black","Home"],["2027-02-06","motion","10:00","Evolution Football Academy v Motion Whites","Away"],["2027-02-13","motion","10:00","Motion Whites v NYSA FC","Home"],["2027-02-20","motion","10:00","Joga Football Development v Motion Whites","Away"]
@@ -260,16 +299,34 @@ const E=[];function a(d,t,time,title,detail=""){E.push({d,t,time,title,detail})}
 ["2026-09-12","hull","15:00","Chelsea v Hull City"],["2026-09-19","hull","15:00","Newcastle United v Hull City"],["2026-10-11","hull","14:00","Hull City v Everton"],["2026-10-17","hull","15:00","Fulham v Hull City"],["2026-10-25","hull","15:00","Hull City v Brentford"],["2026-10-31","hull","16:00","Hull City v Ipswich Town"],["2026-11-07","hull","16:00","Arsenal v Hull City"],["2026-11-21","hull","16:00","Hull City v Brighton"],["2026-11-28","hull","16:00","Crystal Palace v Hull City"],["2026-12-02","hull","21:00","Hull City v Nottingham Forest"],["2026-12-05","hull","16:00","Bournemouth v Hull City"],["2026-12-12","hull","16:00","Hull City v Tottenham"],["2026-12-19","hull","16:00","Manchester City v Hull City"],["2026-12-26","hull","16:00","Hull City v Liverpool"],["2026-12-30","hull","21:00","Hull City v Leeds United"],["2027-01-02","hull","16:00","Sunderland v Hull City"],["2027-01-06","hull","21:00","Nottingham Forest v Hull City"],["2027-01-16","hull","16:00","Hull City v Arsenal"],["2027-01-23","hull","16:00","Ipswich Town v Hull City"],["2027-01-30","hull","16:00","Hull City v Crystal Palace"],["2027-02-06","hull","16:00","Brighton v Hull City"],["2027-02-10","hull","21:00","Hull City v Sunderland"],["2027-02-20","hull","16:00","Liverpool v Hull City"],["2027-02-27","hull","16:00","Hull City v Manchester City"]
 ].forEach(x=>a(...x));
 
-// derived fields: home/away, competition tag, kick-off in minutes
-E.forEach((e,i)=>{
-  e.id=i;e.date=dt(e.d);
+// built-in fixtures: stable ids, home/away and competition tag. Edits and additions are stored separately and laid over these.
+const seenKey={};
+E.forEach(e=>{
+  const k=e.t+"-"+e.d;seenKey[k]=(seenKey[k]??-1)+1;e.id=`${k}-${seenKey[k]}`;
   const [l,r]=e.title.split(" v "),me=teams[e.t].me;
   e.ha=l===me?"H":r===me?"A":"";
   const c=(e.detail.split("·")[0]||"").trim();e.comp=(c==="Cup"||c==="Friendly")?c:"";
-  const m=/^(\d{1,2}):(\d{2})$/.exec(e.time);e.mins=m?(+m[1])*60+(+m[2]):null;
+  e.status="scheduled";e.note="";
 });
+const BASE=E.slice(),BASE_BY_ID=new Map(BASE.map(b=>[b.id,b]));
+const minsOf=s=>{const m=/^(\d{1,2}):(\d{2})$/.exec(s);return m?(+m[1])*60+(+m[2]):null};
+const validFx=o=>!!o&&typeof o.d==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(o.d)&&!!teams[o.t]&&typeof o.title==="string"&&typeof o.time==="string";
+function mk(id,src,base){
+  const [l,r]=src.title.split(" v "),me=teams[src.t].me;
+  return {id,t:src.t,d:src.d,time:src.time,title:src.title,ha:src.ha||(l===me?"H":r===me?"A":""),comp:src.comp??"",
+    status:(src.status==="cancelled"||src.status==="postponed")?src.status:"scheduled",note:src.note||"",
+    date:dt(src.d),mins:minsOf(src.time),base:!!base,added:!base,orig:base?{d:base.d,time:base.time}:null,
+    moved:!!base&&(src.d!==base.d||src.time!==base.time),edited:!!base&&src!==base};
+}
+function buildE(){
+  const out=[],seen=new Set();
+  for(const b of BASE){seen.add(b.id);const o=OV.get(b.id);if(o&&o.removed)continue;out.push(mk(b.id,validFx(o)?o:b,b))}
+  OV.forEach((o,id)=>{if(!seen.has(id)&&!o.removed&&validFx(o))out.push(mk(id,o,null))});
+  return out;
+}
 const cmp=(x,y)=>x.d.localeCompare(y.d)||((x.mins??1e4)-(y.mins??1e4))||ORDER.indexOf(x.t)-ORDER.indexOf(y.t);
 
+let OV=new Map(),DB=null,canWrite=false,ACTIVE=[];
 let view="cal",focus=true,showPast=false,CL=new Map(),POOL=[],current=new Date(NOW.getFullYear(),NOW.getMonth(),1);
 const enabled=new Set(Object.keys(teams));
 const smooth=()=>matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";
@@ -288,20 +345,25 @@ function clashMap(pool){
 }
 function group(list){const g={};list.forEach(e=>(g[e.d]??=[]).push(e));return g}
 
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
 function ev(e,full=false){
-  const t=teams[e.t],cl=CL.get(e.id),haWord=e.ha==="H"?"Home":e.ha==="A"?"Away":"";
-  const tip=[`${t.name}: ${e.title}`,haWord,cl?"Clashes with "+cl.map(x=>x.title).join("; "):""].filter(Boolean).join(" · ");
-  return `<div class="event t-${e.t}${cl?" clash":""}${full?" full":""}" title="${esc(tip)}">`+
-    `<div class="ehead">${cl?'<span class="sr">Clash. </span>':""}<span class="etime">${e.time}</span><span class="eteam">${t.name}</span>${e.comp?`<span class="ecomp">${e.comp}</span>`:""}</div>`+
-    `<span class="etitle">${e.title}</span>`+
-    (full&&cl?`<span class="eclash">Clashes with ${cl.map(x=>`${x.time} ${x.title}`).join(", ")}</span>`:"")+
+  const t=teams[e.t],cl=CL.get(e.id),haWord=e.ha==="H"?"Home":e.ha==="A"?"Away":"",off=e.status!=="scheduled";
+  const was=e.moved&&e.orig?`Was ${fmtShort(dt(e.orig.d))} ${e.orig.time}`:"";
+  const tip=[`${t.name}: ${e.title}`,haWord,off?cap(e.status):"",was,e.note,cl?"Clashes with "+cl.map(x=>x.title).join("; "):""].filter(Boolean).join(" · ");
+  const tags=(off?`<span class="stag bad">${cap(e.status)}</span>`:"")+(e.moved&&!off?'<span class="stag warn">Moved</span>':"")+(e.added?'<span class="stag add">Added</span>':"");
+  const attrs=canWrite?` data-id="${esc(e.id)}" tabindex="0" role="button"`:"";
+  return `<div class="event t-${e.t}${cl?" clash":""}${full?" full":""}${off?" off":""}${canWrite?" editable":""}" title="${esc(tip)}"${attrs}>`+
+    `<div class="ehead">${cl?'<span class="sr">Clash. </span>':""}<span class="etime">${e.time}</span><span class="eteam">${t.name}</span>${e.comp?`<span class="ecomp">${esc(e.comp)}</span>`:""}${tags}</div>`+
+    `<span class="etitle">${esc(e.title)}</span>`+
+    (full&&e.note?`<span class="enote">${esc(e.note)}</span>`:"")+
+    (full&&cl?`<span class="eclash">Clashes with ${cl.map(x=>`${x.time} ${esc(x.title)}`).join(", ")}</span>`:"")+
     (e.ha?`<span class="ha ${e.ha==="H"?"home":"away"}" aria-label="${haWord}">${e.ha}</span>`:"")+`</div>`;
 }
 
 const rel=d=>{const n=Math.round((dt(d)-T0)/DAY);return n===0?"Today":n===1?"Tomorrow":`In ${n} days`};
 function renderNext(){
   const td=iso(T0),nowMin=NOW.getHours()*60+NOW.getMinutes();
-  const up=POOL.filter(e=>e.d>td||(e.d===td&&(e.mins===null||e.mins>=nowMin)));
+  const up=ACTIVE.filter(e=>e.d>td||(e.d===td&&(e.mins===null||e.mins>=nowMin)));
   const g=[];up.forEach(e=>{let x=g[g.length-1];if(!x||x.d!==e.d)g.push(x={d:e.d,es:[]});x.es.push(e)});
   const box=$("upnext");
   if(!g.length){box.innerHTML='<div class="nx-empty">No upcoming fixtures for the selected calendars.</div>';return}
@@ -309,7 +371,7 @@ function renderNext(){
   const fd=dt(first.d);
   const ce=up.find(e=>CL.has(e.id));
   let foot;
-  if(ce){const all=[ce,...CL.get(ce.id)].sort(cmp);foot=`<i class="swatch"></i><span><b>Next clash:</b> ${fmtShort(ce.date)} at ${ce.time} (${all.map(x=>x.title).join(", ")})</span>`}
+  if(ce){const all=[ce,...CL.get(ce.id)].sort(cmp);foot=`<i class="swatch"></i><span><b>Next clash:</b> ${fmtShort(ce.date)} at ${ce.time} (${all.map(x=>esc(x.title)).join(", ")})</span>`}
   else foot='<i class="swatch"></i><span>No clashes ahead for the selected calendars.</span>';
   box.innerHTML=
    `<div class="nx-main"><div class="kicker">Next gameday</div><div class="nx-date">${fd.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})}<span class="pill">${rel(first.d)}</span></div><div class="nx-list">${first.es.map(e=>ev(e,true)).join("")}</div></div>`+
@@ -366,8 +428,11 @@ function renderAgenda(){
 }
 
 function render(){
+  E=buildE();
   POOL=E.filter(e=>enabled.has(e.t)).sort(cmp);
-  CL=clashMap(POOL);
+  ACTIVE=POOL.filter(e=>e.status==="scheduled");
+  CL=clashMap(ACTIVE);
+  chrome();
   renderNext();
   const weekends=view==="cal"&&focus;
   $("nav").hidden=weekends;$("jumpwrap").hidden=!weekends;
@@ -390,7 +455,224 @@ $("all").onclick=()=>{Object.keys(teams).forEach(x=>enabled.add(x));document.que
 $("none").onclick=()=>{enabled.clear();document.querySelectorAll("[data-team]").forEach(c=>c.checked=false);render()};
 $("jump").onchange=e=>{const v=e.target.value;if(v){const el=document.querySelector(`[data-m="${v}"]`);el&&el.scrollIntoView({behavior:smooth(),block:"start"})}e.target.value=""};
 $("wklist").onclick=e=>{if(e.target.closest("#earlier")){showPast=!showPast;render()}};
+
+/* ---------- editing ---------- */
+const $ov=$("overlay"),DEF={motion:{dow:6,time:"10:00"},tigers:{dow:0,time:"11:00"},vets:{dow:0,time:"14:00"},lfc:{dow:6,time:"15:00"},hull:{dow:6,time:"15:00"}};
+let lastFocus=null;
+function openModal(html){lastFocus=document.activeElement;$ov.innerHTML=`<div class="modal" role="dialog" aria-modal="true">${html}</div>`;$ov.hidden=false;const f=$ov.querySelector("select,input,button");f&&f.focus()}
+function closeModal(){$ov.hidden=true;$ov.innerHTML="";lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$ov.addEventListener("mousedown",e=>{if(e.target===$ov)closeModal()});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!$ov.hidden){closeModal();return}
+  if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches(".event[data-id]")){e.preventDefault();openEdit(e.target.dataset.id)}
+});
+document.addEventListener("click",e=>{const el=e.target.closest&&e.target.closest(".event[data-id]");if(el)openEdit(el.dataset.id)});
+
+const nextOn=dow=>iso(addDays(T0,((dow-T0.getDay()+7)%7)||7));
+const newId=()=>"n-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const errText=err=>err&&err.code==="invalid_argument"?"You don't have permission to change fixtures on this page.":err&&err.code==="quota_exceeded"?"This page's storage is full.":"Couldn't save. Check your connection and try again.";
+const oppOf=e=>{const p=e.title.split(" v ");return e.ha==="A"?p[0]:e.ha==="H"?p.slice(1).join(" v "):e.title};
+const twinOf=e=>teams[e.t].pro?E.find(x=>x.id!==e.id&&teams[x.t].pro&&x.t!==e.t&&x.d===e.d&&x.title===e.title)||null:null;
+const fields=(e,p={})=>({t:e.t,d:e.d,time:e.time,title:e.title,ha:e.ha,comp:e.comp,status:e.status,note:e.note,...p});
+
+// write one fixture: unchanged built-in fixtures drop their stored copy, everything else is stored whole
+async function putFx(id,o){
+  const clean={t:o.t,d:o.d,time:o.time,title:o.title,ha:o.ha,comp:o.comp||"",status:o.status||"scheduled",note:o.note||""};
+  const ref=DB.collection("fixtures").doc(id),b=BASE_BY_ID.get(id);
+  if(b&&Object.keys(clean).every(k=>clean[k]===b[k]))await ref.delete();else await ref.set(clean);
+}
+
+function openEdit(id){
+  if(!canWrite||!DB)return;
+  const e=id?E.find(x=>x.id===id):null;
+  if(id&&!e)return;
+  const tw=e?twinOf(e):null,isNew=!e;
+  const opts=Object.keys(teams).map(k=>`<option value="${k}">${teams[k].name}</option>`).join("");
+  openModal(
+   `<h2 class="mt">${isNew?"Add a fixture":"Edit fixture"}</h2><p class="msub">${isNew?"It appears in the calendar straight away.":esc(teams[e.t].name)+" · "+esc(e.title)}</p>`+
+   `<form id="fxform" class="fields" novalidate>`+
+   `<label>Calendar<select id="f-team"${isNew?"":" disabled"}>${opts}</select></label>`+
+   `<label>Home or away<select id="f-ha"><option value="H">Home</option><option value="A">Away</option></select></label>`+
+   `<label class="span2">Opponent<input id="f-opp" type="text" autocomplete="off"></label>`+
+   `<label>Date<input id="f-date" type="date"></label>`+
+   `<label>Kick-off<input id="f-time" type="time"></label>`+
+   `<label class="chk span2"><input id="f-tbc" type="checkbox">Kick-off time to be confirmed</label>`+
+   `<label>Competition<input id="f-comp" type="text" list="comps" placeholder="League" autocomplete="off"></label>`+
+   `<label>Status<select id="f-status"><option value="scheduled">Scheduled</option><option value="postponed">Postponed</option><option value="cancelled">Cancelled</option></select></label>`+
+   `<label class="span2">Note<input id="f-note" type="text" placeholder="e.g. Moved for TV" autocomplete="off"></label>`+
+   (tw?`<label class="chk span2"><input id="f-twin" type="checkbox" checked>Also update the same match under ${teams[tw.t].name}</label>`:"")+
+   `<div id="f-msg" class="msg span2" role="alert"></div>`+
+   `<div class="actions span2"><div class="left">${isNew?"":(e.base&&e.edited?'<button type="button" id="f-reset">Reset to original</button>':"")+'<button type="button" id="f-del" class="danger">Delete</button>'}</div><button type="button" id="f-close">Close</button><button type="submit" id="f-save" class="primary">Save</button></div>`+
+   `</form><datalist id="comps"><option value="Cup"><option value="Friendly"><option value="FA Cup"><option value="League Cup"><option value="Champions League"><option value="Europa League"></datalist>`);
+  const t0=e?e.t:"motion";
+  $("f-team").value=t0;
+  $("f-ha").value=e&&e.ha?e.ha:"H";
+  $("f-opp").value=e?oppOf(e):"";
+  $("f-date").value=e?e.d:nextOn(DEF[t0].dow);
+  const tbc0=!!e&&e.time==="TBC";
+  $("f-tbc").checked=tbc0;$("f-time").disabled=tbc0;$("f-time").value=e?(tbc0?"":e.time):DEF[t0].time;
+  $("f-comp").value=e?e.comp:"";$("f-status").value=e?e.status:"scheduled";$("f-note").value=e?e.note:"";
+  let touched=!isNew;
+  ["f-date","f-time"].forEach(k=>$(k).addEventListener("input",()=>{touched=true}));
+  $("f-team").onchange=()=>{if(!touched){const d=DEF[$("f-team").value];$("f-date").value=nextOn(d.dow);$("f-time").value=d.time}};
+  $("f-tbc").onchange=()=>{$("f-time").disabled=$("f-tbc").checked};
+  $("f-close").onclick=closeModal;
+  if($("f-reset"))$("f-reset").onclick=async()=>{try{await DB.collection("fixtures").doc(e.id).delete();closeModal()}catch(err){$("f-msg").textContent=errText(err)}};
+  if($("f-del")){let armed=false;$("f-del").onclick=async()=>{
+    if(!armed){armed=true;$("f-del").textContent="Click again to delete";return}
+    try{const ref=DB.collection("fixtures").doc(e.id);if(e.base)await ref.set({removed:true});else await ref.delete();closeModal()}catch(err){$("f-msg").textContent=errText(err)}
+  }}
+  $("fxform").onsubmit=async ev2=>{
+    ev2.preventDefault();
+    const msg=$("f-msg");msg.textContent="";
+    const t=$("f-team").value,ha=$("f-ha").value,opp=$("f-opp").value.trim().replace(/\s+v\s+/gi," "),d=$("f-date").value,tbc=$("f-tbc").checked,tm=$("f-time").value;
+    if(!opp){msg.textContent="Enter the opponent.";return}
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(d)){msg.textContent="Choose a date.";return}
+    if(!tbc&&!tm){msg.textContent="Enter a kick-off time, or tick to be confirmed.";return}
+    const me=teams[t].me,time=tbc?"TBC":tm;
+    let title=ha==="H"?`${me} v ${opp}`:`${opp} v ${me}`;
+    if(e&&opp===oppOf(e)&&ha===(e.ha||"H"))title=e.title;
+    const o={t,d,time,title,ha,comp:$("f-comp").value.trim(),status:$("f-status").value,note:$("f-note").value.trim()};
+    $("f-save").disabled=true;
+    try{
+      await putFx(e?e.id:newId(),o);
+      if(tw&&$("f-twin")&&$("f-twin").checked&&title===e.title)await putFx(tw.id,fields(tw,{d,time,comp:o.comp,status:o.status,note:o.note}));
+      closeModal();
+    }catch(err){msg.textContent=errText(err);$("f-save").disabled=false}
+  };
+}
+
+/* ---------- import from a calendar file (.ics) ---------- */
+const ALIAS={"man city":"manchester city","man utd":"manchester united","man united":"manchester united","spurs":"tottenham","tottenham hotspur":"tottenham","newcastle":"newcastle united","wolves":"wolverhampton wanderers","nottm forest":"nottingham forest","forest":"nottingham forest","brighton and hove albion":"brighton","west ham":"west ham united","leeds":"leeds united","leicester":"leicester city","ipswich":"ipswich town","coventry":"coventry city","villa":"aston villa","hull":"hull city","lask":"lask linz","sheff utd":"sheffield united","sheffield utd":"sheffield united","palace":"crystal palace","qpr":"queens park rangers","west brom":"west bromwich albion","norwich":"norwich city","stoke":"stoke city","swansea":"swansea city","cardiff":"cardiff city","derby":"derby county","preston":"preston north end","blackburn":"blackburn rovers"};
+function norm(s){s=String(s).toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9 ]/g," ").replace(/\b(afc|fc|cf)\b/g," ").replace(/\s+/g," ").trim();return ALIAS[s]||s}
+const sameTeam=(x,y)=>norm(x)===norm(y);
+const LON=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/London",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"});
+function londonParts(ms){const p={};LON.formatToParts(new Date(ms)).forEach(x=>{p[x.type]=x.value});return{d:`${p.year}-${p.month}-${p.day}`,time:`${p.hour}:${p.minute}`}}
+function parseICS(txt){
+  const lines=String(txt).replace(/\r?\n[ \t]/g,"").split(/\r?\n/),out=[];let cur=null;
+  for(const ln of lines){
+    if(ln==="BEGIN:VEVENT"){cur={};continue}
+    if(ln==="END:VEVENT"){if(cur)out.push(cur);cur=null;continue}
+    if(!cur)continue;
+    const i=ln.indexOf(":");if(i<0)continue;
+    const [name,...ps]=ln.slice(0,i).split(";"),params={};
+    ps.forEach(p=>{const k=p.indexOf("=");if(k>0)params[p.slice(0,k).toUpperCase()]=p.slice(k+1)});
+    cur[name.toUpperCase()]={val:ln.slice(i+1).replace(/\\[nN]/g," ").replace(/\\([,;\\])/g,"$1"),params};
+  }
+  return out;
+}
+function whenOf(p){
+  const m=/^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(\d{2})?(Z)?)?$/.exec(p.val.trim());
+  if(!m)return null;
+  const [,Y,M,D,h,mi,,z]=m;
+  if(h===undefined)return{d:`${Y}-${M}-${D}`,time:"TBC"};
+  const tz=(p.params.TZID||"").toLowerCase();
+  const r=(z||tz==="utc"||tz==="etc/utc"||tz==="gmt")?londonParts(Date.UTC(+Y,+M-1,+D,+h,+mi)):{d:`${Y}-${M}-${D}`,time:`${h}:${mi}`};
+  if(r.time==="00:00")r.time="TBC"; // feeds use midnight for kick-offs not yet set
+  return r;
+}
+function splitTeams(s){const m=/^(.*?)\s+(?:v|vs\.?|-|–|—)\s+(.*)$/i.exec(s.replace(/^[^\p{L}\p{N}]+/u,"").trim());return m?[m[1].trim(),m[2].trim()]:null}
+function diffICS(txt,team){
+  const me=teams[team].me,today=iso(T0),imp=[];let skipped=0,unread=0,same=0;
+  for(const v of parseICS(txt)){
+    const sum=v.SUMMARY&&v.SUMMARY.val,w=v.DTSTART&&whenOf(v.DTSTART);
+    const sp=sum&&w?splitTeams(sum.replace(/\s*\([^)]*\)\s*$/,"")):null;
+    if(!sp){unread++;continue}
+    let ha,opp;
+    if(sameTeam(sp[0],me)){ha="H";opp=sp[1]}else if(sameTeam(sp[1],me)){ha="A";opp=sp[0]}else{skipped++;continue}
+    if(w.d<today)continue;
+    imp.push({d:w.d,time:w.time,ha,opp,cancelled:/cancel/i.test((v.STATUS&&v.STATUS.val)||"")});
+  }
+  imp.sort((x,y)=>x.d.localeCompare(y.d));
+  const cands=E.filter(x=>x.t===team&&x.d>=today),used=new Set(),rows=[];
+  for(const i of imp){
+    let best=null,bd=1e15;
+    for(const c of cands){
+      if(used.has(c.id)||c.ha!==i.ha||!sameTeam(oppOf(c),i.opp))continue;
+      const dd=Math.abs(dt(c.d)-dt(i.d));if(dd<bd){bd=dd;best=c}
+    }
+    if(best){
+      used.add(best.id);
+      const time=(i.time==="TBC"&&best.time!=="TBC"&&best.d===i.d)?best.time:i.time;
+      const status=i.cancelled?"cancelled":best.status;
+      if(best.d!==i.d||best.time!==time||status!==best.status)rows.push({kind:"change",e:best,d:i.d,time,status});else same++;
+    }else rows.push({kind:"new",team,ha:i.ha,opp:i.opp,d:i.d,time:i.time,status:i.cancelled?"cancelled":"scheduled"});
+  }
+  return{rows,same,skipped,unread,missing:cands.filter(c=>!used.has(c.id))};
+}
+function openImport(){
+  openModal(
+   `<h2 class="mt">Update Liverpool or Hull City fixtures</h2>`+
+   `<p class="msub">This page can't download calendars itself, so get the file first and choose it here. Repeat whenever dates or times change.</p>`+
+   `<ol class="steps"><li>Download a calendar file: <a href="https://pub.fotmob.com/prod/pub/api/v2/calendar/team/8650.ics" target="_blank" rel="noopener">Liverpool</a> or <a href="https://pub.fotmob.com/prod/pub/api/v2/calendar/team/8667.ics" target="_blank" rel="noopener">Hull City</a> (FotMob feeds), or use <a href="https://www.liverpoolfc.com/fixtures/mens/2026" target="_blank" rel="noopener">Liverpool's own calendar</a>.</li><li>Pick the club and choose the downloaded .ics file.</li><li>Review what changed and apply the changes you want.</li></ol>`+
+   `<div class="fields"><label>Club<select id="i-team"><option value="lfc">Liverpool</option><option value="hull">Hull City</option></select></label><label>Calendar file<input id="i-file" type="file" accept=".ics,text/calendar"></label></div>`+
+   `<div id="i-out"></div><div class="actions"><button type="button" id="i-close">Close</button></div>`);
+  let txt=null;
+  $("i-close").onclick=closeModal;
+  const run=()=>{if(txt!==null)showDiff(diffICS(txt,$("i-team").value))};
+  $("i-team").onchange=run;
+  $("i-file").onchange=async()=>{
+    const f=$("i-file").files[0];if(!f)return;
+    try{txt=await f.text()}catch(_){$("i-out").innerHTML='<p class="msg">Couldn\'t read that file.</p>';return}
+    run();
+  };
+}
+function showDiff(res){
+  const out=$("i-out"),tn=n=>`${n} ${n===1?"fixture":"fixtures"}`;
+  let h=`<p class="msub">${tn(res.same)} already match`+(res.skipped?`, ${res.skipped} for other teams skipped`:"")+(res.unread?`, ${res.unread} entries not understood`:"")+".</p>";
+  if(!res.rows.length){
+    out.innerHTML=h+'<p class="msub">Nothing to update. Your list matches this file.</p>'+missingHTML(res);return;
+  }
+  h+='<div class="imp-list">'+res.rows.map((r,n)=>{
+    if(r.kind==="change")return `<label class="imp"><input type="checkbox" data-i="${n}" checked><span><b class="stag warn">Changed</b>${esc(r.e.title)}<br><small>${fmtShort(r.e.date)} ${r.e.time}${r.e.status!=="scheduled"?" ("+r.e.status+")":""} to ${fmtShort(dt(r.d))} ${r.time}${r.status!==r.e.status?" ("+r.status+")":""}</small></span></label>`;
+    const me=teams[r.team].me,title=r.ha==="H"?`${me} v ${r.opp}`:`${r.opp} v ${me}`;
+    return `<label class="imp"><input type="checkbox" data-i="${n}" checked><span><b class="stag add">New</b>${esc(title)}<br><small>${fmtShort(dt(r.d))} ${r.time} · ${r.ha==="H"?"Home":"Away"}${r.status==="cancelled"?" · cancelled":""}</small></span></label>`;
+  }).join("")+"</div>"+missingHTML(res)+`<div id="i-msg" class="msg" role="alert"></div><div class="actions"><button type="button" id="i-apply" class="primary">Apply selected</button></div>`;
+  out.innerHTML=h;
+  $("i-apply").onclick=async()=>{
+    const picks=[...out.querySelectorAll("input[data-i]:checked")].map(x=>res.rows[+x.dataset.i]);
+    if(!picks.length){$("i-msg").textContent="Tick at least one change.";return}
+    $("i-apply").disabled=true;let n=0;
+    try{
+      for(const r of picks){
+        $("i-apply").textContent=`Applying ${n+1} of ${picks.length}…`;
+        if(r.kind==="change"){
+          await putFx(r.e.id,fields(r.e,{d:r.d,time:r.time,status:r.status}));
+          const tw=twinOf(r.e);if(tw)await putFx(tw.id,fields(tw,{d:r.d,time:r.time,status:r.status}));
+        }else{
+          const me=teams[r.team].me;
+          await putFx(newId(),{t:r.team,d:r.d,time:r.time,title:r.ha==="H"?`${me} v ${r.opp}`:`${r.opp} v ${me}`,ha:r.ha,comp:"",status:r.status,note:""});
+        }
+        n++;
+      }
+      out.innerHTML=`<p class="msub">Applied ${tn(n)}.</p>`;
+    }catch(err){$("i-msg").textContent=`Stopped after ${n}. ${errText(err)}`;$("i-apply").disabled=false;$("i-apply").textContent="Apply selected"}
+  };
+}
+const missingHTML=res=>res.missing.length?`<details class="miss"><summary>${res.missing.length} of your upcoming fixtures aren't in this file (left as they are)</summary>${res.missing.map(c=>`<div>${fmtShort(c.date)} ${c.time} ${esc(c.title)}</div>`).join("")}</details>`:"";
+
+/* ---------- page chrome and database ---------- */
+function chrome(){
+  $("add").hidden=!canWrite;$("import").hidden=!canWrite;$("edithint").hidden=!canWrite;
+  const rem=[...OV].filter(([id,o])=>o&&o.removed&&BASE_BY_ID.has(id)).map(x=>x[0]);
+  $("restore").hidden=!(canWrite&&rem.length);
+  $("restore").textContent=`Restore ${rem.length} removed fixture${rem.length>1?"s":""}`;
+  $("restore").onclick=async()=>{try{for(const id of rem)await DB.collection("fixtures").doc(id).delete()}catch(_){}};
+}
+$("add").onclick=()=>openEdit(null);
+$("import").onclick=openImport;
 render();
+(async()=>{
+  try{
+    const c=window.claude;if(!c||!c.use)return;
+    DB=await c.use("db");if(!DB)return;
+    const user=await c.use("user");
+    const w=user&&user.can?await user.can("data.write"):null;
+    canWrite=w!==false;
+    DB.collection("fixtures").onSnapshot(snap=>{OV=new Map(snap.docs.map(d=>[d.id,d.data()]));render()},err=>{canWrite=false;DB=null;render()});
+    render();
+  }catch(_){DB=null;canWrite=false}
+})();
 </script>
 
 </body></html>
