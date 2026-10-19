@@ -1,23 +1,248 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Fixtures Calendar</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>My Fixtures Calendar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <style>
-:root{--bg:#f3f5fa;--ink:#172033;--muted:#6b7487;--line:#e3e7ef;--blue:#4658df;--motion:#d6a313;--tigers:#32845e;--vets:#df762e;--lfc:#cf3e49;--hull:#333945}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}header{padding:26px clamp(16px,4vw,42px);background:linear-gradient(120deg,#18223c,#3f50b9);color:white}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:11px;opacity:.7;font-weight:800}.heading{font-size:clamp(28px,4vw,38px);font-weight:850;letter-spacing:-.04em;margin:3px 0}.sub{color:#dce2ff}main{max-width:1450px;margin:auto;padding:22px clamp(10px,3vw,30px)}.panel{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 28px #18223c0b;margin-bottom:15px}.toolbar{padding:13px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.nav,.right,.filters,.toggles{display:flex;align-items:center;gap:8px;flex-wrap:wrap}button{font:inherit;font-weight:700;border:1px solid var(--line);background:white;border-radius:10px;padding:8px 12px;cursor:pointer;color:var(--ink)}button:hover{background:#f7f8ff;border-color:#b5bfdf}.primary{background:var(--blue);border-color:var(--blue);color:white}.month{font-size:20px;font-weight:850;min-width:205px}.toggles{background:#f0f2f8;border-radius:11px;padding:3px}.toggles button{border:0;background:transparent;padding:7px 10px}.toggles button.active{background:white;box-shadow:0 1px 5px #0001}.filters{padding:13px 16px}.filtertitle{font-weight:800;margin-right:3px}.chip{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid var(--line);border-radius:99px;font-weight:700;cursor:pointer}.chip input{accent-color:var(--blue)}.dot{width:9px;height:9px;border-radius:50%;display:inline-block}.filteractions{margin-left:auto;display:flex;gap:6px}.weekdays,.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.weekdays{background:#f8f9fc;border-bottom:1px solid var(--line)}.weekdays div{padding:10px;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.day{min-height:138px;padding:7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:white;min-width:0}.day:nth-child(7n){border-right:0}.day.outside{background:#fafbfe;color:#a4aabd}.day.today{box-shadow:inset 0 0 0 2px #7380ff}.dayhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-weight:800}.num{width:26px;height:26px;border-radius:50%;display:grid;place-items:center}.today .num{background:var(--blue);color:white}.count{font-size:10px;color:var(--muted)}.event{border-left:3px solid var(--c);background:var(--b);border-radius:6px;padding:5px 6px;margin:4px 0;font-size:11px;line-height:1.28;overflow-wrap:anywhere}.etime{font-weight:850;white-space:nowrap}.etitle{display:block;margin-top:2px}.detail{font-size:10px;color:#626c7f;display:block;margin-top:2px}.empty{color:#b0b7c7;font-size:11px;padding:5px 1px}.note{padding:12px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}.agenda{padding:6px 16px}.agrow{display:grid;grid-template-columns:95px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.agdate{font-weight:850}.agdate small{display:block;color:var(--muted)}.agitems{display:grid;gap:6px}.agitem{border-left:4px solid var(--c);background:var(--b);border-radius:7px;padding:8px 10px}.agitem strong{display:block}.legend{display:flex;gap:12px 18px;flex-wrap:wrap;padding:14px 16px}.legitem{display:flex;gap:7px;align-items:center;font-size:12px;font-weight:750}.hidden{display:none!important}.foot{color:var(--muted);font-size:12px;padding:5px 2px}
-@media(max-width:800px){.day{min-height:105px;padding:4px}.weekdays div{padding:7px 4px;font-size:9px}.event{font-size:10px;padding:4px}.detail{display:none}}
-@media(max-width:560px){header{padding:20px 16px}.month{min-width:0;font-size:18px}.toolbar .nav{width:100%;justify-content:space-between}.right{width:100%;justify-content:space-between}.filtertitle{width:100%}.filteractions{margin-left:0}.day{min-height:78px;padding:3px}.num{width:22px;height:22px;font-size:11px}.count{display:none}.event{font-size:9px;padding:3px;margin:3px 0}.weekdays div{text-align:center}.agrow{grid-template-columns:68px 1fr;gap:8px}}
-</style></head><body>
-<header><div class="eyebrow">Personal fixture planner</div><div class="heading">My Fixtures</div><div class="sub">Five calendars in one place. Switch teams on or off to focus on fixtures and spot clashes.</div></header>
-<main><section class="panel toolbar"><div class="nav"><button id="prev">‹</button><div id="month" class="month"></div><button id="next">›</button></div><div class="right"><div class="toggles"><button class="active" data-view="month">Month</button><button data-view="agenda">Agenda</button></div><button id="focus">Weekend focus: On</button><button id="today" class="primary">Today</button></div></section>
+/* Layout: a "next gameday" band first, then the controls, then the season as weekend rows (label | Sat | Sun) so many weekends fit on one screen. */
+:root{
+  --bg:#f3f5fa;--panel:#ffffff;--panel-2:#f8f9fc;--ink:#172033;--muted:#68728a;--line:#e3e7ef;
+  --accent:#4658df;--accent-ink:#ffffff;--soft:#f0f2f8;--hov:#f7f8ff;--hov-line:#b5bfdf;
+  --hdr-a:#18223c;--hdr-b:#3f50b9;--hdr-ink:#ffffff;--hdr-sub:#dce2ff;
+  --clash:#a21caf;--shadow:0 8px 28px #18223c0b;--today-ring:#7380ff;--outside:#fafbfe;--outside-ink:#a4aabd;
+  --motion:#d6a313;--motion-bg:#fff6d7;
+  --tigers:#32845e;--tigers-bg:#e8f6ee;
+  --vets:#df762e;--vets-bg:#fff0e5;
+  --lfc:#cf3e49;--lfc-bg:#ffebeb;
+  --hull:#333945;--hull-bg:#edf0f4;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1322;--panel:#161d33;--panel-2:#1b2340;--ink:#e7ebf7;--muted:#9aa4bf;--line:#27304c;
+  --accent:#7f8cff;--accent-ink:#0e1322;--soft:#1f2745;--hov:#1f2745;--hov-line:#3b4770;
+  --hdr-a:#0b1020;--hdr-b:#2a3680;--hdr-ink:#ffffff;--hdr-sub:#b9c3f5;
+  --clash:#e879f9;--shadow:none;--today-ring:#7f8cff;--outside:#131a2e;--outside-ink:#5d6784;
+  --motion:#e6b92f;--motion-bg:#2e2810;
+  --tigers:#4cb687;--tigers-bg:#12281f;
+  --vets:#f08f4a;--vets-bg:#33200f;
+  --lfc:#ee5f69;--lfc-bg:#35161a;
+  --hull:#aab3c6;--hull-bg:#242a39;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1322;--panel:#161d33;--panel-2:#1b2340;--ink:#e7ebf7;--muted:#9aa4bf;--line:#27304c;
+  --accent:#7f8cff;--accent-ink:#0e1322;--soft:#1f2745;--hov:#1f2745;--hov-line:#3b4770;
+  --hdr-a:#0b1020;--hdr-b:#2a3680;--hdr-ink:#ffffff;--hdr-sub:#b9c3f5;
+  --clash:#e879f9;--shadow:none;--today-ring:#7f8cff;--outside:#131a2e;--outside-ink:#5d6784;
+  --motion:#e6b92f;--motion-bg:#2e2810;
+  --tigers:#4cb687;--tigers-bg:#12281f;
+  --vets:#f08f4a;--vets-bg:#33200f;
+  --lfc:#ee5f69;--lfc-bg:#35161a;
+  --hull:#aab3c6;--hull-bg:#242a39;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+.t-motion{--c:var(--motion);--b:var(--motion-bg)}
+.t-tigers{--c:var(--tigers);--b:var(--tigers-bg)}
+.t-vets{--c:var(--vets);--b:var(--vets-bg)}
+.t-lfc{--c:var(--lfc);--b:var(--lfc-bg)}
+.t-hull{--c:var(--hull);--b:var(--hull-bg)}
+
+header{padding-block:26px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:linear-gradient(120deg,var(--hdr-a),var(--hdr-b));color:var(--hdr-ink)}
+.inner{max-width:1450px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:11px;opacity:.75;font-weight:800}
+.heading{font-size:clamp(28px,4vw,38px);font-weight:850;letter-spacing:-.04em;margin:3px 0;text-wrap:balance}
+.sub{color:var(--hdr-sub)}
+main{max-width:1450px;margin:auto;padding-block:22px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:15px;overflow:hidden}
+
+button,select{font:inherit;font-weight:700;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:8px 12px;cursor:pointer;color:var(--ink)}
+button:hover,select:hover{background:var(--hov);border-color:var(--hov-line)}
+button:focus-visible,select:focus-visible,.chip:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.primary:hover{background:var(--accent);border-color:var(--accent);filter:brightness(1.1)}
+
+/* next gameday */
+.nx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.nx-main{padding:16px 18px;border-right:1px solid var(--line);min-width:0}
+.nx-more{padding:16px 18px;display:grid;gap:12px;align-content:start;min-width:0}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:850;color:var(--muted)}
+.nx-date{font-size:clamp(22px,3vw,28px);font-weight:850;letter-spacing:-.03em;line-height:1.15;margin-top:3px;text-wrap:balance}
+.pill{display:inline-block;background:var(--accent);color:var(--accent-ink);border-radius:99px;padding:2px 10px;font-size:12px;font-weight:800;letter-spacing:0;vertical-align:middle;margin-left:6px;white-space:nowrap}
+.nx-list{display:grid;gap:6px;margin-top:12px}
+.nx-day{display:grid;gap:6px}
+.nx-dh{display:flex;justify-content:space-between;gap:8px;align-items:baseline;font-weight:850}
+.nx-dh span{color:var(--muted);font-size:12px;font-weight:700}
+.nx-evs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:6px}
+.nx-foot{grid-column:1/-1;border-top:1px solid var(--line);padding:10px 18px;font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.nx-foot b{color:var(--ink)}
+.nx-empty{padding:18px;color:var(--muted);grid-column:1/-1}
+.swatch{width:14px;height:14px;border-radius:4px;border:2px solid var(--clash);display:inline-block;flex:none}
+
+/* controls */
+.toolbar{padding:13px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.nav,.right,.filters,.toggles{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.month{font-size:20px;font-weight:850;min-width:190px}
+.toggles{background:var(--soft);border-radius:11px;padding:3px}
+.toggles button{border:0;background:transparent;padding:7px 10px}
+.toggles button.active{background:var(--panel);box-shadow:0 1px 5px #0001}
+#focus[aria-pressed="true"]{background:var(--soft);border-color:var(--hov-line)}
+.filters{padding:13px 16px}
+.filtertitle{font-weight:800;margin-right:3px}
+.chip{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid var(--line);border-radius:99px;font-weight:700;cursor:pointer;background:var(--panel)}
+.chip input{accent-color:var(--accent)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.filteractions{margin-left:auto;display:flex;gap:6px}
+
+/* fixture */
+.event{position:relative;border-left:3px solid var(--c);background:var(--b);border-radius:6px;padding:5px 25px 6px 7px;font-size:11.5px;line-height:1.3;min-width:0;overflow-wrap:anywhere}
+.ehead{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.etime{font-weight:850;white-space:nowrap;font-variant-numeric:tabular-nums}
+.eteam{font-weight:700;color:var(--muted)}
+.ecomp{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:4px;padding:0 4px;color:var(--muted)}
+.etitle{display:block;margin-top:1px;font-weight:600}
+.eclash{display:block;margin-top:4px;font-size:11px;font-weight:700;color:var(--clash)}
+.event.full{font-size:13px;padding:8px 30px 9px 10px}
+.event.clash{outline:2px solid var(--clash);outline-offset:0}
+.ha{position:absolute;right:5px;bottom:5px;width:17px;height:17px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:850;line-height:1}
+.ha.home{background:var(--ink);color:var(--panel)}
+.ha.away{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* weekend rows */
+.mh{margin:0;padding:9px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:850;background:var(--panel-2);border-bottom:1px solid var(--line)}
+.wk{display:grid;grid-template-columns:108px minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--line)}
+.wklab{padding:9px 12px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:1px;background:var(--panel-2);min-width:0}
+.wklab b{font-size:13px}
+.wklab small{color:var(--muted);font-size:11px}
+.wk.now .wklab{background:var(--accent);color:var(--accent-ink)}
+.wk.now .wklab small{color:inherit;opacity:.85}
+.wk.past .wkday,.wk.past .freecell{opacity:.6}
+.wkday{padding:7px 8px;min-width:0;border-right:1px solid var(--line)}
+.wkday:last-child{border-right:0}
+.dh{font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px;display:flex;gap:6px;align-items:center}
+.num{min-width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;font-size:12px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.today .num{background:var(--accent);color:var(--accent-ink)}
+.evs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:6px}
+.empty{color:var(--muted);font-size:11px;opacity:.75;padding:2px 0}
+.pad{padding:16px}
+.freecell{grid-column:2/-1;padding:12px;color:var(--muted);font-size:12px;align-self:center}
+.earlier{display:block;width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;background:var(--panel-2);color:var(--muted);padding:9px}
+
+/* month grid */
+.weekdays,.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.weekdays{background:var(--panel-2);border-bottom:1px solid var(--line)}
+.weekdays div{padding:10px;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+.day{min-height:120px;padding:7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel);min-width:0}
+.day:nth-child(7n){border-right:0}
+.day.outside{background:var(--outside);color:var(--outside-ink)}
+.day.today{box-shadow:inset 0 0 0 2px var(--today-ring)}
+.dayhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-weight:800}
+.count{font-size:10px;color:var(--muted)}
+.devs{display:grid;gap:4px}
+
+/* agenda */
+.agenda{padding:6px 16px}
+.agrow{display:grid;grid-template-columns:95px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.agdate{font-weight:850}
+.agdate small{display:block;color:var(--muted)}
+.agitems{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:6px}
+.note{padding:12px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+
+.legend{display:flex;gap:12px 18px;flex-wrap:wrap;padding:14px 16px}
+.legitem{display:flex;gap:7px;align-items:center;font-size:12px;font-weight:750}
+.legitem .ha{position:static;width:16px;height:16px}
+.foot{color:var(--muted);font-size:12px;padding:5px 2px}
+
+@media(max-width:800px){
+  .nx{grid-template-columns:minmax(0,1fr)}
+  .nx-main{border-right:0;border-bottom:1px solid var(--line)}
+}
+@media(max-width:640px){
+  .month{min-width:0;font-size:18px}
+  .toolbar .nav{width:100%;justify-content:space-between}
+  .right{width:100%;justify-content:space-between}
+  .filtertitle{width:100%}
+  .filteractions{margin-left:0}
+  .wk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .wklab{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:baseline;border-right:0;border-bottom:1px solid var(--line);padding:6px 12px}
+  .wkday{padding:6px}
+  .evs,.nx-evs{grid-template-columns:minmax(0,1fr)}
+  .freecell{grid-column:1/-1;padding:8px 12px}
+  .agrow{grid-template-columns:68px minmax(0,1fr);gap:8px}
+  .weekdays div{text-align:center;padding:7px 2px;font-size:9px}
+  .day{min-height:70px;padding:3px}
+  .count{display:none}
+  .devs .event{display:flex;align-items:center;justify-content:space-between;gap:2px;padding:3px 3px 3px 4px;font-size:9px}
+  .devs .eteam,.devs .etitle,.devs .ecomp,.devs .eclash{display:none}
+  .devs .ha{position:static;width:13px;height:13px;font-size:8px;flex:none}
+  .devs .num{min-width:20px;height:20px}
+}
+</style>
+
+<header><div class="inner"><div class="eyebrow">Personal fixture planner</div><div class="heading">My Fixtures</div><div class="sub">Five calendars in one place. Switch teams on or off to focus on fixtures and spot clashes.</div></div></header>
+<main>
+<section class="panel nx" id="upnext" aria-label="Next gameday"></section>
+
+<section class="panel toolbar">
+  <div class="nav" id="nav"><button type="button" id="prev" aria-label="Previous month">‹</button><div id="month" class="month"></div><button type="button" id="nextm" aria-label="Next month">›</button></div>
+  <div class="nav" id="jumpwrap"><div class="month">Weekends</div><select id="jump" aria-label="Jump to month"></select></div>
+  <div class="right">
+    <div class="toggles"><button type="button" class="active" data-view="cal">Calendar</button><button type="button" data-view="agenda">Agenda</button></div>
+    <button type="button" id="focus" aria-pressed="true">Weekend focus: On</button>
+    <button type="button" id="today" class="primary">Today</button>
+  </div>
+</section>
+
 <section class="panel filters"><span class="filtertitle">Show calendars</span>
-<label class="chip"><input type="checkbox" data-team="motion" checked><i class="dot" style="background:var(--motion)"></i>Motion Whites</label>
-<label class="chip"><input type="checkbox" data-team="tigers" checked><i class="dot" style="background:var(--tigers)"></i>Tigers</label>
-<label class="chip"><input type="checkbox" data-team="vets" checked><i class="dot" style="background:var(--vets)"></i>Vets</label>
-<label class="chip"><input type="checkbox" data-team="lfc" checked><i class="dot" style="background:var(--lfc)"></i>Liverpool</label>
-<label class="chip"><input type="checkbox" data-team="hull" checked><i class="dot" style="background:var(--hull)"></i>Hull City</label><div class="filteractions"><button id="all">Select all</button><button id="none">Clear all</button></div></section>
-<section class="panel"><div id="monthview"><div class="weekdays"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div><div id="grid" class="calendar"></div></div><div id="agendaview" class="agenda hidden"></div><div class="note">Weekday columns are kept compact unless they contain a fixture. Times for professional fixtures are provisional and may change. Motion defaults to 10am Saturdays; Vets to 2pm Sundays.</div></section>
-<section class="panel legend"><div class="legitem"><i class="dot" style="background:var(--motion)"></i>Motion Whites</div><div class="legitem"><i class="dot" style="background:var(--tigers)"></i>Bridlington Rangers Tigers</div><div class="legitem"><i class="dot" style="background:var(--vets)"></i>Bridlington Town Rovers Vets</div><div class="legitem"><i class="dot" style="background:var(--lfc)"></i>Liverpool</div><div class="legitem"><i class="dot" style="background:var(--hull)"></i>Hull City</div></section>
-<div class="foot">Fixture data is based on the working list supplied in this conversation. Please verify dates/times before travelling.</div></main>
+  <label class="chip"><input type="checkbox" data-team="motion" checked><i class="dot" style="background:var(--motion)"></i>Motion Whites</label>
+  <label class="chip"><input type="checkbox" data-team="tigers" checked><i class="dot" style="background:var(--tigers)"></i>Tigers</label>
+  <label class="chip"><input type="checkbox" data-team="vets" checked><i class="dot" style="background:var(--vets)"></i>Vets</label>
+  <label class="chip"><input type="checkbox" data-team="lfc" checked><i class="dot" style="background:var(--lfc)"></i>Liverpool</label>
+  <label class="chip"><input type="checkbox" data-team="hull" checked><i class="dot" style="background:var(--hull)"></i>Hull City</label>
+  <div class="filteractions"><button type="button" id="all">Select all</button><button type="button" id="none">Clear all</button></div>
+</section>
+
+<section class="panel">
+  <div id="calview">
+    <div id="weekdays" class="weekdays"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div>
+    <div id="grid" class="calendar"></div>
+    <div id="wklist"></div>
+  </div>
+  <div id="agendaview" class="agenda" hidden></div>
+  <div class="note">Weekend focus shows Saturdays and Sundays only; midweek games still appear under Next gameday. A box around a fixture means it clashes: kick-offs within 2 hours of each other, or exactly the same time when Hull City or Liverpool are involved. Times for professional fixtures are provisional and may change. Motion defaults to 10am Saturdays; Vets to 2pm Sundays.</div>
+</section>
+
+<section class="panel legend">
+  <div class="legitem"><i class="dot" style="background:var(--motion)"></i>Motion Whites</div>
+  <div class="legitem"><i class="dot" style="background:var(--tigers)"></i>Bridlington Rangers Tigers</div>
+  <div class="legitem"><i class="dot" style="background:var(--vets)"></i>Bridlington Town Rovers Vets</div>
+  <div class="legitem"><i class="dot" style="background:var(--lfc)"></i>Liverpool</div>
+  <div class="legitem"><i class="dot" style="background:var(--hull)"></i>Hull City</div>
+  <div class="legitem"><span class="ha home">H</span>Home</div>
+  <div class="legitem"><span class="ha away">A</span>Away</div>
+  <div class="legitem"><i class="swatch"></i>Clash</div>
+</section>
+<div class="foot">Fixture data is based on the working list supplied in this conversation. Please verify dates/times before travelling.</div>
+</main>
+
 <script>
-const teams={motion:{name:"Motion Whites",c:"#d6a313",b:"#fff6d7"},tigers:{name:"Tigers",c:"#32845e",b:"#e8f6ee"},vets:{name:"Vets O35",c:"#df762e",b:"#fff0e5"},lfc:{name:"Liverpool",c:"#cf3e49",b:"#ffebeb"},hull:{name:"Hull City",c:"#333945",b:"#edf0f4"}};
+const CLASH_MINS=120; // kick-offs this close clash; Hull City and Liverpool only clash at exactly the same time
+const NOW=new Date();
+const T0=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+const DAY=864e5,ORDER=["motion","tigers","vets","lfc","hull"];
+const teams={
+  motion:{name:"Motion Whites",me:"Motion Whites",pro:false},
+  tigers:{name:"Tigers",me:"Tigers",pro:false},
+  vets:{name:"Vets O35",me:"Vets",pro:false},
+  lfc:{name:"Liverpool",me:"Liverpool",pro:true},
+  hull:{name:"Hull City",me:"Hull City",pro:true}
+};
+const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,"0");
+function dt(s){let [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
+function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const isWk=d=>d.getDay()===0||d.getDay()===6;
+const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
+
 const E=[];function a(d,t,time,title,detail=""){E.push({d,t,time,title,detail})}
 [
 ["2026-09-19","motion","10:00","Motion Whites v Tekkers","Cup · Home"],["2026-09-22","motion","17:30","Hull City Academy v Motion Whites","Friendly · Away"],["2026-09-23","motion","TBC","Hawkes Scarborough v Motion Whites","Cup · Away"],["2026-09-26","motion","10:00","Motion Whites v Scarborough Athletic","Home"],
@@ -34,19 +259,138 @@ const E=[];function a(d,t,time,title,detail=""){E.push({d,t,time,title,detail})}
 ["2026-09-12","lfc","15:00","Liverpool v Fulham"],["2026-09-15","lfc","20:00","Liverpool v Tottenham"],["2026-09-20","lfc","14:00","Bournemouth v Liverpool"],["2026-10-11","lfc","16:30","Liverpool v Manchester City"],["2026-10-14","lfc","17:45","LASK Linz v Liverpool"],["2026-10-17","lfc","15:00","Brentford v Liverpool"],["2026-10-20","lfc","20:00","Liverpool v Villarreal"],["2026-10-25","lfc","15:00","Liverpool v Brighton"],["2026-11-01","lfc","17:30","Liverpool v Arsenal"],["2026-11-07","lfc","16:00","Crystal Palace v Liverpool"],["2026-11-21","lfc","16:00","Liverpool v Manchester United"],["2026-11-28","lfc","16:00","Everton v Liverpool"],["2026-12-02","lfc","21:00","Liverpool v Sunderland"],["2026-12-05","lfc","16:00","Chelsea v Liverpool"],["2026-12-09","lfc","21:00","Liverpool v FC Porto"],["2026-12-12","lfc","16:00","Liverpool v Leeds United"],["2026-12-19","lfc","16:00","Liverpool v Tottenham"],["2026-12-26","lfc","16:00","Hull City v Liverpool"],["2026-12-30","lfc","21:00","Aston Villa v Liverpool"],["2027-01-02","lfc","16:00","Liverpool v Coventry City"],["2027-01-06","lfc","21:00","Sunderland v Liverpool"],["2027-01-16","lfc","16:00","Liverpool v Crystal Palace"],["2027-01-23","lfc","16:00","Manchester United v Liverpool"],["2027-01-30","lfc","16:00","Liverpool v Everton"],["2027-02-06","lfc","16:00","Arsenal v Liverpool"],["2027-02-10","lfc","21:00","Coventry City v Liverpool"],["2027-02-20","lfc","16:00","Liverpool v Hull City"],["2027-02-27","lfc","16:00","Tottenham v Liverpool"],
 ["2026-09-12","hull","15:00","Chelsea v Hull City"],["2026-09-19","hull","15:00","Newcastle United v Hull City"],["2026-10-11","hull","14:00","Hull City v Everton"],["2026-10-17","hull","15:00","Fulham v Hull City"],["2026-10-25","hull","15:00","Hull City v Brentford"],["2026-10-31","hull","16:00","Hull City v Ipswich Town"],["2026-11-07","hull","16:00","Arsenal v Hull City"],["2026-11-21","hull","16:00","Hull City v Brighton"],["2026-11-28","hull","16:00","Crystal Palace v Hull City"],["2026-12-02","hull","21:00","Hull City v Nottingham Forest"],["2026-12-05","hull","16:00","Bournemouth v Hull City"],["2026-12-12","hull","16:00","Hull City v Tottenham"],["2026-12-19","hull","16:00","Manchester City v Hull City"],["2026-12-26","hull","16:00","Hull City v Liverpool"],["2026-12-30","hull","21:00","Hull City v Leeds United"],["2027-01-02","hull","16:00","Sunderland v Hull City"],["2027-01-06","hull","21:00","Nottingham Forest v Hull City"],["2027-01-16","hull","16:00","Hull City v Arsenal"],["2027-01-23","hull","16:00","Ipswich Town v Hull City"],["2027-01-30","hull","16:00","Hull City v Crystal Palace"],["2027-02-06","hull","16:00","Brighton v Hull City"],["2027-02-10","hull","21:00","Hull City v Sunderland"],["2027-02-20","hull","16:00","Liverpool v Hull City"],["2027-02-27","hull","16:00","Hull City v Manchester City"]
 ].forEach(x=>a(...x));
-let current=new Date(2026,8,1),view="month",weekendFocus=true;const enabled=new Set(Object.keys(teams));const $=id=>document.getElementById(id);
-function dt(s){let [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}function iso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
-function shown(){return E.filter(e=>enabled.has(e.t)&&(!weekendFocus||[0,6].includes(dt(e.d).getDay())||e.d==="2026-09-15"||e.d==="2026-09-22"||e.d==="2026-09-23"||e.d==="2026-10-14"||e.d==="2026-10-20"||e.d==="2026-12-02"||e.d==="2026-12-09"||e.d==="2026-12-30"||e.d==="2027-01-06"||e.d==="2027-02-10"))}
-function htmlEvent(e,agenda=false){let t=teams[e.t];return `<div class="${agenda?"agitem":"event"}" style="--c:${t.c};--b:${t.b}"><span class="etime">${e.time}</span> <b>${t.name}</b><span class="etitle">${e.title}</span>${agenda&&e.detail?`<small class="detail">${e.detail}</small>`:""}</div>`}
-function render(){ $("month").textContent=current.toLocaleDateString("en-GB",{month:"long",year:"numeric"});$("monthview").classList.toggle("hidden",view!=="month");$("agendaview").classList.toggle("hidden",view!=="agenda");
-let first=new Date(current.getFullYear(),current.getMonth(),1),start=new Date(current.getFullYear(),current.getMonth(),1-((first.getDay()+6)%7)),today=new Date();today.setHours(0,0,0,0);let grid=$("grid");grid.innerHTML="";
-for(let i=0;i<42;i++){let d=new Date(start);d.setDate(start.getDate()+i);let dayE=shown().filter(e=>e.d===iso(d)).sort((a,b)=>a.time.localeCompare(b.time));let cell=document.createElement("div");cell.className="day"+(d.getMonth()!==current.getMonth()?" outside":"")+(d.getTime()===today.getTime()?" today":"");if(weekendFocus&&![0,6].includes(d.getDay())&&!dayE.length)cell.classList.add("compact");cell.innerHTML=`<div class="dayhead"><span class="num">${d.getDate()}</span><span class="count">${dayE.length?dayE.length+" item"+(dayE.length>1?"s":""):""}</span></div>${dayE.map(e=>htmlEvent(e)).join("")}${!dayE.length&&d.getMonth()===current.getMonth()&&(!weekendFocus||[0,6].includes(d.getDay()))?'<div class="empty">No fixtures</div>':""}`;grid.appendChild(cell)}
-document.querySelectorAll(".compact").forEach(x=>{x.style.minHeight="36px";x.style.padding="3px";x.querySelector(".dayhead").style.marginBottom="0"});
-let groups={};shown().filter(e=>dt(e.d).getFullYear()===current.getFullYear()&&dt(e.d).getMonth()===current.getMonth()).sort((a,b)=>(a.d+a.time).localeCompare(b.d+b.time)).forEach(e=>(groups[e.d]??=[]).push(e));
-$("agendaview").innerHTML=Object.keys(groups).length?Object.entries(groups).map(([d,es])=>`<div class="agrow"><div class="agdate">${dt(d).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}<small>${dt(d).getFullYear()}</small></div><div class="agitems">${es.map(e=>htmlEvent(e,true)).join("")}</div></div>`).join(""):'<p class="detail">No fixtures for the selected calendars this month.</p>'}
-$("prev").onclick=()=>{current=new Date(current.getFullYear(),current.getMonth()-1,1);render()};$("next").onclick=()=>{current=new Date(current.getFullYear(),current.getMonth()+1,1);render()};$("today").onclick=()=>{let d=new Date();current=new Date(d.getFullYear(),d.getMonth(),1);render()};
-$("focus").onclick=()=>{weekendFocus=!weekendFocus;$("focus").textContent="Weekend focus: "+(weekendFocus?"On":"Off");render()};
+
+// derived fields: home/away, competition tag, kick-off in minutes
+E.forEach((e,i)=>{
+  e.id=i;e.date=dt(e.d);
+  const [l,r]=e.title.split(" v "),me=teams[e.t].me;
+  e.ha=l===me?"H":r===me?"A":"";
+  const c=(e.detail.split("·")[0]||"").trim();e.comp=(c==="Cup"||c==="Friendly")?c:"";
+  const m=/^(\d{1,2}):(\d{2})$/.exec(e.time);e.mins=m?(+m[1])*60+(+m[2]):null;
+});
+const cmp=(x,y)=>x.d.localeCompare(y.d)||((x.mins??1e4)-(y.mins??1e4))||ORDER.indexOf(x.t)-ORDER.indexOf(y.t);
+
+let view="cal",focus=true,showPast=false,CL=new Map(),POOL=[],current=new Date(NOW.getFullYear(),NOW.getMonth(),1);
+const enabled=new Set(Object.keys(teams));
+const smooth=()=>matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";
+
+function clashMap(pool){
+  const byDay={},m=new Map();
+  pool.filter(e=>e.mins!==null).forEach(e=>(byDay[e.d]??=[]).push(e));
+  const add=(x,y)=>{(m.get(x.id)||m.set(x.id,[]).get(x.id)).push(y)};
+  for(const day of Object.values(byDay))for(let i=0;i<day.length;i++)for(let j=i+1;j<day.length;j++){
+    const p=day[i],q=day[j];
+    if(p.title===q.title)continue; // Hull v Liverpool is one match listed under both clubs
+    const lim=(teams[p.t].pro||teams[q.t].pro)?0:CLASH_MINS;
+    if(Math.abs(p.mins-q.mins)<=lim){add(p,q);add(q,p)}
+  }
+  return m;
+}
+function group(list){const g={};list.forEach(e=>(g[e.d]??=[]).push(e));return g}
+
+function ev(e,full=false){
+  const t=teams[e.t],cl=CL.get(e.id),haWord=e.ha==="H"?"Home":e.ha==="A"?"Away":"";
+  const tip=[`${t.name}: ${e.title}`,haWord,cl?"Clashes with "+cl.map(x=>x.title).join("; "):""].filter(Boolean).join(" · ");
+  return `<div class="event t-${e.t}${cl?" clash":""}${full?" full":""}" title="${esc(tip)}">`+
+    `<div class="ehead">${cl?'<span class="sr">Clash. </span>':""}<span class="etime">${e.time}</span><span class="eteam">${t.name}</span>${e.comp?`<span class="ecomp">${e.comp}</span>`:""}</div>`+
+    `<span class="etitle">${e.title}</span>`+
+    (full&&cl?`<span class="eclash">Clashes with ${cl.map(x=>`${x.time} ${x.title}`).join(", ")}</span>`:"")+
+    (e.ha?`<span class="ha ${e.ha==="H"?"home":"away"}" aria-label="${haWord}">${e.ha}</span>`:"")+`</div>`;
+}
+
+const rel=d=>{const n=Math.round((dt(d)-T0)/DAY);return n===0?"Today":n===1?"Tomorrow":`In ${n} days`};
+function renderNext(){
+  const td=iso(T0),nowMin=NOW.getHours()*60+NOW.getMinutes();
+  const up=POOL.filter(e=>e.d>td||(e.d===td&&(e.mins===null||e.mins>=nowMin)));
+  const g=[];up.forEach(e=>{let x=g[g.length-1];if(!x||x.d!==e.d)g.push(x={d:e.d,es:[]});x.es.push(e)});
+  const box=$("upnext");
+  if(!g.length){box.innerHTML='<div class="nx-empty">No upcoming fixtures for the selected calendars.</div>';return}
+  const [first,...rest]=g;
+  const fd=dt(first.d);
+  const ce=up.find(e=>CL.has(e.id));
+  let foot;
+  if(ce){const all=[ce,...CL.get(ce.id)].sort(cmp);foot=`<i class="swatch"></i><span><b>Next clash:</b> ${fmtShort(ce.date)} at ${ce.time} (${all.map(x=>x.title).join(", ")})</span>`}
+  else foot='<i class="swatch"></i><span>No clashes ahead for the selected calendars.</span>';
+  box.innerHTML=
+   `<div class="nx-main"><div class="kicker">Next gameday</div><div class="nx-date">${fd.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})}<span class="pill">${rel(first.d)}</span></div><div class="nx-list">${first.es.map(e=>ev(e,true)).join("")}</div></div>`+
+   `<div class="nx-more"><div class="kicker">Then</div>${rest.slice(0,3).map(x=>`<div class="nx-day"><div class="nx-dh"><b>${fmtShort(dt(x.d))}</b><span>${rel(x.d)}</span></div><div class="nx-evs">${x.es.map(e=>ev(e)).join("")}</div></div>`).join("")||'<div class="empty">Nothing else scheduled.</div>'}</div>`+
+   `<div class="nx-foot">${foot}</div>`;
+}
+const fmtShort=d=>d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});
+
+function renderWeekends(){
+  const wkEv=POOL.filter(e=>isWk(e.date));
+  const box=$("wklist"),jump=$("jump");
+  if(!wkEv.length){box.innerHTML='<p class="empty pad">No weekend fixtures for the selected calendars.</p>';jump.innerHTML="";return}
+  const byDate=group(wkEv);
+  const first=wkEv[0].date,last=wkEv[wkEv.length-1].date;
+  let sat=addDays(first,-((first.getDay()+1)%7));
+  const dow=T0.getDay(),refSat=addDays(T0,dow===6?0:dow===0?-1:6-dow);
+  let html="",lastM="",past=0,nowDone=false;const months=[];
+  for(;sat<=last;sat=addDays(sat,7)){
+    const sun=addDays(sat,1),isPast=sun<T0;
+    if(isPast){past++;if(!showPast)continue}
+    const mk=sat.getFullYear()+"-"+pad(sat.getMonth()+1);
+    if(mk!==lastM){lastM=mk;const name=sat.toLocaleDateString("en-GB",{month:"long",year:"numeric"});months.push([mk,name]);html+=`<h3 class="mh" data-m="${mk}">${name}</h3>`}
+    const mon=d=>d.toLocaleDateString("en-GB",{month:"short"});
+    const range=sat.getMonth()===sun.getMonth()?`${sat.getDate()}–${sun.getDate()} ${mon(sat)}`:`${sat.getDate()} ${mon(sat)}–${sun.getDate()} ${mon(sun)}`;
+    const w=Math.round((sat-refSat)/(7*DAY));
+    const relw=w===0?"This weekend":w===1?"Next weekend":w===-1?"Last weekend":w>1?`In ${w} weeks`:`${-w} weeks ago`;
+    const isNow=!isPast&&!nowDone;if(isNow)nowDone=true;
+    const se=byDate[iso(sat)]||[],ue=byDate[iso(sun)]||[];
+    const cls="wk"+(isPast?" past":"")+(isNow?" now":"");
+    const lab=`<div class="wklab"><b>${range}</b><small>${relw}</small></div>`;
+    if(!se.length&&!ue.length){html+=`<div class="${cls} free">${lab}<div class="freecell">Free weekend</div></div>`;continue}
+    const cell=(d,es,nm)=>`<div class="wkday${d.getTime()===T0.getTime()?" today":""}"><div class="dh"><span>${nm}</span><span class="num">${d.getDate()}</span></div>${es.length?`<div class="evs">${es.map(e=>ev(e)).join("")}</div>`:'<div class="empty">No fixtures</div>'}</div>`;
+    html+=`<div class="${cls}">${lab}${cell(sat,se,"Sat")}${cell(sun,ue,"Sun")}</div>`;
+  }
+  if(past)html=`<button type="button" class="earlier" id="earlier">${showPast?"Hide":"Show"} ${past} earlier weekend${past>1?"s":""}</button>`+html;
+  box.innerHTML=html||'<p class="empty pad">No upcoming weekends.</p>';
+  jump.innerHTML='<option value="">Jump to month…</option>'+months.map(([k,n])=>`<option value="${k}">${n}</option>`).join("");
+}
+
+function renderMonth(){
+  const y=current.getFullYear(),m=current.getMonth(),off=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),rows=Math.ceil((off+dim)/7);
+  const start=new Date(y,m,1-off),by=group(POOL);let h="";
+  for(let i=0;i<rows*7;i++){
+    const d=addDays(start,i),es=by[iso(d)]||[];
+    h+=`<div class="day${d.getMonth()!==m?" outside":""}${d.getTime()===T0.getTime()?" today":""}"><div class="dayhead"><span class="num">${d.getDate()}</span><span class="count">${es.length?es.length+" item"+(es.length>1?"s":""):""}</span></div><div class="devs">${es.map(e=>ev(e)).join("")}</div></div>`;
+  }
+  $("grid").innerHTML=h;
+}
+
+function renderAgenda(){
+  const es=POOL.filter(e=>e.date.getFullYear()===current.getFullYear()&&e.date.getMonth()===current.getMonth()&&(!focus||isWk(e.date)));
+  const g=group(es),keys=Object.keys(g).sort();
+  $("agendaview").innerHTML=keys.length?keys.map(d=>`<div class="agrow"><div class="agdate">${dt(d).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}<small>${dt(d).getFullYear()}</small></div><div class="agitems">${g[d].map(e=>ev(e,true)).join("")}</div></div>`).join(""):'<p class="empty pad">No fixtures for the selected calendars this month.</p>';
+}
+
+function render(){
+  POOL=E.filter(e=>enabled.has(e.t)).sort(cmp);
+  CL=clashMap(POOL);
+  renderNext();
+  const weekends=view==="cal"&&focus;
+  $("nav").hidden=weekends;$("jumpwrap").hidden=!weekends;
+  $("calview").hidden=view!=="cal";$("agendaview").hidden=view!=="agenda";
+  $("weekdays").hidden=focus;$("grid").hidden=focus;$("wklist").hidden=!focus;
+  $("month").textContent=current.toLocaleDateString("en-GB",{month:"long",year:"numeric"});
+  if(view==="cal"){focus?renderWeekends():renderMonth()}else renderAgenda();
+}
+
+$("prev").onclick=()=>{current=new Date(current.getFullYear(),current.getMonth()-1,1);render()};
+$("nextm").onclick=()=>{current=new Date(current.getFullYear(),current.getMonth()+1,1);render()};
+$("today").onclick=()=>{
+  current=new Date(NOW.getFullYear(),NOW.getMonth(),1);render();
+  if(view==="cal"&&focus){const t=document.querySelector(".wk.now")||document.querySelector(".wk");t&&t.scrollIntoView({behavior:smooth(),block:"center"})}
+};
+$("focus").onclick=()=>{focus=!focus;$("focus").textContent="Weekend focus: "+(focus?"On":"Off");$("focus").setAttribute("aria-pressed",String(focus));render()};
 document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{view=b.dataset.view;document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("active",x===b));render()});
 document.querySelectorAll("[data-team]").forEach(c=>c.onchange=()=>{c.checked?enabled.add(c.dataset.team):enabled.delete(c.dataset.team);render()});
-$("all").onclick=()=>{Object.keys(teams).forEach(x=>enabled.add(x));document.querySelectorAll("[data-team]").forEach(c=>c.checked=true);render()};$("none").onclick=()=>{enabled.clear();document.querySelectorAll("[data-team]").forEach(c=>c.checked=false);render()};render();
-</script></body></html>
+$("all").onclick=()=>{Object.keys(teams).forEach(x=>enabled.add(x));document.querySelectorAll("[data-team]").forEach(c=>c.checked=true);render()};
+$("none").onclick=()=>{enabled.clear();document.querySelectorAll("[data-team]").forEach(c=>c.checked=false);render()};
+$("jump").onchange=e=>{const v=e.target.value;if(v){const el=document.querySelector(`[data-m="${v}"]`);el&&el.scrollIntoView({behavior:smooth(),block:"start"})}e.target.value=""};
+$("wklist").onclick=e=>{if(e.target.closest("#earlier")){showPast=!showPast;render()}};
+render();
+</script>
+
+</body></html>
